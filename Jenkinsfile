@@ -20,5 +20,22 @@ pipeline {
                 build job: 'webapp-deploy-to-staging'
             }
         }
+        stage('Deploy to Production'){
+             steps{
+                 timeout(timme:5, unit:'DAYS'){
+                     input message:'Approve PRDUCTION Deployment'
+                 }
+
+                 build jobs: 'webapp-deploy-to-production'
+             }
+             post {
+                 sucess{
+                     echo 'Code deployed to Production'
+                 }
+                 failure {
+                     echo 'Deployment Failed.'
+                 }
+             }
+        }
     }
 }
