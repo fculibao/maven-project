@@ -9,7 +9,7 @@ pipeline {
                 sh 'mvn clean package'
             }
             post {
-                success {
+                success{
                     echo 'Now Archiving...'
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
@@ -22,14 +22,14 @@ pipeline {
         }
         stage('Deploy to Production'){
              steps{
-                 timeout(timme:5, unit:'DAYS'){
+                 timeout(time:5, unit:'DAYS'){
                      input message:'Approve PRDUCTION Deployment'
                  }
 
                  build job: 'webapp-deploy-to-production'
              }
              post {
-                 sucess{
+                 success{
                      echo 'Code deployed to Production'
                  }
                  failure {
