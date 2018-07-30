@@ -26,7 +26,7 @@ pipeline {
                      input message:'Approve PRDUCTION Deployment'
                  }
 
-                 build jobs: 'webapp-deploy-to-production'
+                 build job: 'webapp-deploy-to-production'
              }
              post {
                  sucess{
