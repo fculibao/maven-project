@@ -15,5 +15,10 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Staging'){
+            steps {
+                build job: 'webapp-deploy-to-staging'
+            }
+        }
     }
 }
